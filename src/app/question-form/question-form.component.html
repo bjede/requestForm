@@ -5,15 +5,15 @@
                 Ihre Urlaubsdaten
             </legend>
 
-            <div class="form__vacation-data">
+            <div class="form__vacation-data row">
                 <!-- Travel period -->
-                <div class="form__field-container">
+                <div class="form__field-container col-6">
                     <label for="form-date">Reisezeitraum<span class="star">*</span></label>
                     <input class="form__field" type="date" name="form-date" id="form-date">
                 </div>
 
                 <!-- Number of adults -->
-                <div class="form__field-container">
+                <div class="form__field-container col-6">
                     <label for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
                     <input class="form__field" type="number" name="form-number" id="form-number">
                 </div>
@@ -25,68 +25,111 @@
             <legend class="form__legend">
                 Kinder
             </legend>
-
-            <!-- Child name -->
-            <label for="child-name">Name des Kindes<span class="star">*</span></label>
-            <input type="text" class="form__field" name="child-name" id="child-name">
-
-            <label>Geburtstag<span class="star">*</span></label>
-            <select name="day" id="day">
-                <option value="Tag">Tag</option>
-                <option value="1">1</option>
-            </select>
-            <select name="month" id="month">
-                <option value="month">Monat</option>
-                <option value="1">1</option>
-            </select>
-            <select name="year" id="year">
-                <option value="year">Jahr</option>
-                <option value="1">1</option>
-            </select>
+            <p class="Child-text-information">
+                Als Familienspezialist ist es uns wichtig, Ihnen ein maßgeschneidertes Angebot zu übermitteln. Bitte
+                geben Sie uns daher den Vornamen und das Alter Ihrer Kinder/Ihres Kindes an.
+            </p>
+            <div class="form__container row">
+                <div class="form__field-container col-6">
+                    <!-- Child name -->
+                    <label for="child-name">Name des Kindes<span class="star">*</span></label>
+                    <input type="text" class="form__field" name="child-name" id="child-name">
+                </div>
+                <div class="form__field-container col-6">
+                    <label>Geburtstag<span class="star">*</span></label>
+                    <div class="select-container">
+                        <select name="day" id="day">
+                            <option value="Tag">Tag</option>
+                            <option value="1">1</option>
+                        </select>
+                        <select name="month" id="month">
+                            <option value="month">Monat</option>
+                            <option value="1">1</option>
+                        </select>
+                        <select name="year" id="year">
+                            <option value="year">Jahr</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset class="form__fieldset">
             <legend class="form__legend">
                 Ihre Kontaktdaten
             </legend>
+            <div class="contact-data__container row">
+                <div class="contact-data__left">
+                    <div class="col-6">
+                        <div style="display: flex; flex-direction: column;" >
+                            <!-- First name -->
+                            <div class="form__field-container">
+                                <label for="form-first-name">Vorname<span class="star">*</span></label>
+                                <input type="text" class="form__field" id="form-first-name" name="form-first-name">
+                            </div>
 
-            <!-- First name -->
-            <label for="form-first-name">Vorname<span class="star">*</span></label>
-            <input type="text" class="form__field" id="form-first-name" name="form-first-name">
+                            <!-- Last name -->
+                            <div class="form__field-container ">
+                                <label for="form-last-name">Nachname<span class="star">*</span></label>
+                                <input type="text" class="form__field" id="form-last-name" name="form-last-name">
+                            </div>
 
-            <!-- Street -->
-            <label for="form-street">Straße<span class="star">*</span></label>
-            <input type="text" class="form__field" id="form-street" name="form-street">
+                            <!-- Email -->
+                            <div class="form__field-container ">
+                                <label for="form-email">Email<span class="star">*</span></label>
+                                <input type="email" class="form__field" id="form-email" name="form-email">
+                            </div>
 
-            <!-- Last name -->
-            <label for="form-last-name">Nachname<span class="star">*</span></label>
-            <input type="text" id="form-last-name" name="form-last-name">
+                            <!-- Phonenumber -->
+                            <div class="form__field-container ">
+                                <label for="form-phone">Telefon</label>
+                                <input type="tel" class="form__field" id="form-phone" name="form-phone">
+                            </div>
 
-            <!-- Zip code -->
-            <label for="form-zip-code">PLZ<span class="star">*</span></label>
-            <input type="number" class="form__field" id="form-zip-code" name="form-zip-code">
 
-            <!-- City -->
-            <label for="form-city">Nachname<span class="star">*</span></label>
-            <input type="text" class="form__field" id="form-city" name="form-city">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- Street -->
+                        <div class="form__field-container">
+                            <label for="form-street">Straße<span class="star">*</span></label>
+                            <input type="text" class="form__field" id="form-street" name="form-street">
+                        </div>
 
-            <!-- Email -->
-            <label for="form-email">Email<span class="star">*</span></label>
-            <input type="email" class="form__field" id="form-email" name="form-email">
+                        <!-- Zip code -->
+                        <div class="form__field-container">
+                            <label for="form-zip-code">PLZ<span class="star">*</span></label>
+                            <input type="number" class="form__field" id="form-zip-code" name="form-zip-code">
+                        </div>
 
-            <!-- Country -->
-            <label for="form-country">Land<span class="star">*</span></label>
-            <select name="form-country" id="form-country">
-                <option value="Auswählen">Auswählen</option>
-            </select>
+                        <!-- City -->
+                        <div class="form__field-container">
+                            <label for="form-city">Stadt<span class="star">*</span></label>
+                            <input type="text" class="form__field" id="form-city" name="form-city">
+                        </div>
 
-            <!-- Phonenumber -->
-            <label for="form-phone">Telefon</label>
-            <input type="tel" id="form-phone" name="form-phone">
+                        <!-- Country -->
+                        <div class="form__field-container">
+                            <label for="form-country">Land<span class="star">*</span></label>
+                            <select name="form-country" id="form-country">
+                                <option value="Auswählen">Auswählen</option>
+                            </select>
+                        </div>
+                    </div>
 
-            <!-- Message -->
-            <label for="form-message">Fragen oder Wünsche</label>
-            <textarea name="message" class="form__textarea" id="form-message" cols="30" rows="10"></textarea>
+
+
+                </div>
+                <div class="contact-data__right">
+                    <div class="form__field-container">
+                        <!-- Message -->
+                        <label for="form-message">Fragen oder Wünsche</label>
+                        <textarea name="message" class="form__textarea" id="form-message" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
         </fieldset>
         <div class="btn-container">
             <button class="form__btn">

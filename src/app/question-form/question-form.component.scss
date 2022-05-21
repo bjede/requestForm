@@ -5,22 +5,45 @@
 }
 
 .form__fieldset {
-    margin: 0 0 3rem 0;
+    margin: 0 0 0.5rem 0;
     legend {
         margin: 0 0 1.5rem 0;
     }
 }
 
+.Child-text-information {
+    margin: 0 0 1.5rem 0;
+}
+
 .form__vacation-data {
     display: flex;
-    margin: 0 0 2rem 0;
+    flex-wrap: wrap;
+
     .form__vacation-data > * {
         flex: 1;
     }
-    .form__field-container {
-        display: flex;
-        flex-direction: column;
+
+    
+}
+.form__field-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 0 1.5rem 0
+}
+
+.form__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select-container {
+    display: flex;
+    height: 100%;
+
+    & > select {
         flex: 1;
+        min-height: 3.6rem;
         margin: 0 1rem 0 0;
 
         &:last-child {
@@ -37,7 +60,7 @@
 
 .form__legend {
     font-size: 2.8rem;
-    font-family: 'Sansita Swashed', cursive;
+    font-family: "Sansita Swashed", cursive;
     font-weight: bold;
     color: var(--color-primary);
 }
@@ -46,6 +69,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.contact-data__container {
+    display: flex;
+
+    .contact-data__left {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 2;
+    }
+
+    .contact-data__right {
+        flex: 1;
+    }
+}
+
+.form__textarea {
+    height: 100%;
 }
 
 .form__btn {
