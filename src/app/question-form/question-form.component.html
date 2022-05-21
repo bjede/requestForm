@@ -1,0 +1,98 @@
+<section class="form-section">
+    <form class="form">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">
+                Ihre Urlaubsdaten
+            </legend>
+
+            <div class="form__vacation-data">
+                <!-- Travel period -->
+                <div class="form__field-container">
+                    <label for="form-date">Reisezeitraum<span class="star">*</span></label>
+                    <input class="form__field" type="date" name="form-date" id="form-date">
+                </div>
+
+                <!-- Number of adults -->
+                <div class="form__field-container">
+                    <label for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
+                    <input class="form__field" type="number" name="form-number" id="form-number">
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Child section -->
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">
+                Kinder
+            </legend>
+
+            <!-- Child name -->
+            <label for="child-name">Name des Kindes<span class="star">*</span></label>
+            <input type="text" class="form__field" name="child-name" id="child-name">
+
+            <label>Geburtstag<span class="star">*</span></label>
+            <select name="day" id="day">
+                <option value="Tag">Tag</option>
+                <option value="1">1</option>
+            </select>
+            <select name="month" id="month">
+                <option value="month">Monat</option>
+                <option value="1">1</option>
+            </select>
+            <select name="year" id="year">
+                <option value="year">Jahr</option>
+                <option value="1">1</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">
+                Ihre Kontaktdaten
+            </legend>
+
+            <!-- First name -->
+            <label for="form-first-name">Vorname<span class="star">*</span></label>
+            <input type="text" class="form__field" id="form-first-name" name="form-first-name">
+
+            <!-- Street -->
+            <label for="form-street">Straße<span class="star">*</span></label>
+            <input type="text" class="form__field" id="form-street" name="form-street">
+
+            <!-- Last name -->
+            <label for="form-last-name">Nachname<span class="star">*</span></label>
+            <input type="text" id="form-last-name" name="form-last-name">
+
+            <!-- Zip code -->
+            <label for="form-zip-code">PLZ<span class="star">*</span></label>
+            <input type="number" class="form__field" id="form-zip-code" name="form-zip-code">
+
+            <!-- City -->
+            <label for="form-city">Nachname<span class="star">*</span></label>
+            <input type="text" class="form__field" id="form-city" name="form-city">
+
+            <!-- Email -->
+            <label for="form-email">Email<span class="star">*</span></label>
+            <input type="email" class="form__field" id="form-email" name="form-email">
+
+            <!-- Country -->
+            <label for="form-country">Land<span class="star">*</span></label>
+            <select name="form-country" id="form-country">
+                <option value="Auswählen">Auswählen</option>
+            </select>
+
+            <!-- Phonenumber -->
+            <label for="form-phone">Telefon</label>
+            <input type="tel" id="form-phone" name="form-phone">
+
+            <!-- Message -->
+            <label for="form-message">Fragen oder Wünsche</label>
+            <textarea name="message" class="form__textarea" id="form-message" cols="30" rows="10"></textarea>
+        </fieldset>
+        <div class="btn-container">
+            <button class="form__btn">
+                <span>Anfrage</span>
+                <span>absenden</span>
+            </button>
+        </div>
+    </form>
+</section>
