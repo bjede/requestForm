@@ -13,6 +13,7 @@
 /* Set the primary color */
 :root {
     --color-primary: #AA2E24;
+    --color-default: #424242;
 }
 
 /* Set the font size to 10px */
@@ -23,12 +24,31 @@ html {
 /* Set the font size to 16px */
 body {
     font-size: 1.6rem;
+    color: var(--color-default);
     font-family: 'Overlock', cursive;
     background-color: #fcfbf8;
 }
 
+input, 
+select, 
+textarea {
+    border: 1px solid #d6d6d6;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    font-size: 1.6rem;
+}
+
+select {
+    padding-left: 1.2rem;
+    cursor: pointer;
+}
+
 fieldset {
     border: none;
+}
+
+.p-lr-sm {
+    padding: 0 0.5rem;
 }
 
 .row {
@@ -37,5 +57,29 @@ fieldset {
 
 .col-6 {
     padding: 0 0.5rem;
-    flex: 1;
+    flex: 1 1 50%;
+
+    @media (max-width: 713px) {
+        flex: 1 1 100%;
+    }
+}
+
+.w-3 {
+    width: 33.33%;
+    padding: 0 0.5rem;
+}
+
+.w-6 {
+    width: 66.667%;
+    padding: 0 0.5rem;
+}
+
+.w-100 {
+    @media (max-width: 713px) {
+        width: 100%;
+    }
+}
+
+.h-100 {
+    height: calc(100% - 1.5rem);
 }
