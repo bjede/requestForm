@@ -22,14 +22,12 @@
     .form__vacation-data > * {
         flex: 1;
     }
-
-    
 }
+
 .form__field-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    margin: 0 0 1.5rem 0
+    margin: 0 0 1.5rem 0;
 }
 
 .form__container {
@@ -37,13 +35,17 @@
     flex-wrap: wrap;
 }
 
+.form__label {
+    font-size: 1.7rem;
+    margin: 0 0 0.5rem 0;
+}
+
 .select-container {
     display: flex;
-    height: 100%;
 
     & > select {
         flex: 1;
-        min-height: 3.6rem;
+        min-height: 4.5rem;
         margin: 0 1rem 0 0;
 
         &:last-child {
@@ -53,7 +55,7 @@
 }
 
 .form__field {
-    height: 3.6rem;
+    height: 4.5rem;
     padding: 0.5rem 0.8rem;
     outline: none;
 }
@@ -74,19 +76,43 @@
 .contact-data__container {
     display: flex;
 
+    @media (max-width: 1023px) {
+        flex-direction: column;
+    }
+
     .contact-data__left {
         display: flex;
-        flex-wrap: wrap;
-        flex: 2;
+        flex: 1 1 70%;
+
+        .contact-data__left-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 713px) {
+            flex-wrap: wrap;
+        }
     }
 
     .contact-data__right {
-        flex: 1;
+        flex: 1 1 30%;
+    }
+}
+
+.location-container {
+    display: flex;
+
+    @media (max-width: 713px) {
+        flex-direction: column;
     }
 }
 
 .form__textarea {
     height: 100%;
+    width: 100%;
+    resize: none;
+    outline: none;
+    padding: 0.5rem 0.8rem;
 }
 
 .form__btn {
