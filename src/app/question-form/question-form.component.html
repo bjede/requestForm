@@ -8,13 +8,13 @@
             <div class="form__vacation-data row">
                 <!-- Travel period -->
                 <div class="form__field-container col-6">
-                    <label for="form-date">Reisezeitraum<span class="star">*</span></label>
+                    <label class="form__label" for="form-date">Reisezeitraum<span class="star">*</span></label>
                     <input class="form__field" type="date" name="form-date" id="form-date">
                 </div>
 
                 <!-- Number of adults -->
                 <div class="form__field-container col-6">
-                    <label for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
+                    <label class="form__label" for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
                     <input class="form__field" type="number" name="form-number" id="form-number">
                 </div>
             </div>
@@ -32,11 +32,11 @@
             <div class="form__container row">
                 <div class="form__field-container col-6">
                     <!-- Child name -->
-                    <label for="child-name">Name des Kindes<span class="star">*</span></label>
+                    <label class="form__label" for="child-name">Name des Kindes<span class="star">*</span></label>
                     <input type="text" class="form__field" name="child-name" id="child-name">
                 </div>
                 <div class="form__field-container col-6">
-                    <label>Geburtstag<span class="star">*</span></label>
+                    <label class="form__label" for="day">Geburtstag<span class="star">*</span></label>
                     <div class="select-container">
                         <select name="day" id="day">
                             <option value="Tag">Tag</option>
@@ -62,69 +62,64 @@
             <div class="contact-data__container row">
                 <div class="contact-data__left">
                     <div class="col-6">
-                        <div style="display: flex; flex-direction: column;" >
+                        <div class="contact-data__left-container">
                             <!-- First name -->
                             <div class="form__field-container">
-                                <label for="form-first-name">Vorname<span class="star">*</span></label>
+                                <label class="form__label" for="form-first-name">Vorname<span class="star">*</span></label>
                                 <input type="text" class="form__field" id="form-first-name" name="form-first-name">
                             </div>
 
                             <!-- Last name -->
                             <div class="form__field-container ">
-                                <label for="form-last-name">Nachname<span class="star">*</span></label>
+                                <label class="form__label" for="form-last-name">Nachname<span class="star">*</span></label>
                                 <input type="text" class="form__field" id="form-last-name" name="form-last-name">
                             </div>
 
                             <!-- Email -->
                             <div class="form__field-container ">
-                                <label for="form-email">Email<span class="star">*</span></label>
+                                <label class="form__label" for="form-email">Email<span class="star">*</span></label>
                                 <input type="email" class="form__field" id="form-email" name="form-email">
                             </div>
 
                             <!-- Phonenumber -->
                             <div class="form__field-container ">
-                                <label for="form-phone">Telefon</label>
+                                <label class="form__label" for="form-phone">Telefon</label>
                                 <input type="tel" class="form__field" id="form-phone" name="form-phone">
                             </div>
-
-
                         </div>
                     </div>
                     <div class="col-6">
                         <!-- Street -->
                         <div class="form__field-container">
-                            <label for="form-street">Straße<span class="star">*</span></label>
+                            <label class="form__label" for="form-street">Straße<span class="star">*</span></label>
                             <input type="text" class="form__field" id="form-street" name="form-street">
                         </div>
+                        <div class="location-container row">
+                            <!-- Zip code -->
+                            <div class="form__field-container w-3 w-100">
+                                <label class="form__label" for="form-zip-code">PLZ<span class="star">*</span></label>
+                                <input type="text" class="form__field form__zip-code" id="form-zip-code" name="form-zip-code">
+                            </div>
 
-                        <!-- Zip code -->
-                        <div class="form__field-container">
-                            <label for="form-zip-code">PLZ<span class="star">*</span></label>
-                            <input type="number" class="form__field" id="form-zip-code" name="form-zip-code">
+                            <!-- City -->
+                            <div class="form__field-container w-6 w-100">
+                                <label class="form__label" for="form-city">Stadt<span class="star">*</span></label>
+                                <input type="text" class="form__field" id="form-city" name="form-city">
+                            </div>
                         </div>
-
-                        <!-- City -->
-                        <div class="form__field-container">
-                            <label for="form-city">Stadt<span class="star">*</span></label>
-                            <input type="text" class="form__field" id="form-city" name="form-city">
-                        </div>
-
                         <!-- Country -->
-                        <div class="form__field-container">
-                            <label for="form-country">Land<span class="star">*</span></label>
+                        <div class="form__field-container select-container">
+                            <label class="form__label" for="form-country">Land<span class="star">*</span></label>
                             <select name="form-country" id="form-country">
                                 <option value="Auswählen">Auswählen</option>
                             </select>
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="contact-data__right">
-                    <div class="form__field-container">
-                        <!-- Message -->
-                        <label for="form-message">Fragen oder Wünsche</label>
+                    <!-- Message -->
+                    <div class="form__field-container p-lr-sm h-100">
+                        <label class="form__label" for="form-message">Fragen oder Wünsche</label>
                         <textarea name="message" class="form__textarea" id="form-message" cols="30"
                             rows="10"></textarea>
                     </div>
