@@ -58,6 +58,10 @@
     height: 4.5rem;
     padding: 0.5rem 0.8rem;
     outline: none;
+
+    &:focus {
+        border-color: var(--color-primary);
+    }
 }
 
 .form__legend {

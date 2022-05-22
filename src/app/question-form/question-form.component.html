@@ -15,7 +15,7 @@
                 <!-- Number of adults -->
                 <div class="form__field-container col-6">
                     <label class="form__label" for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
-                    <input class="form__field" type="number" name="form-number" id="form-number">
+                    <input class="form__field" type="number" name="form-number" id="form-number" required>
                 </div>
             </div>
         </fieldset>
@@ -33,21 +33,21 @@
                 <div class="form__field-container col-6">
                     <!-- Child name -->
                     <label class="form__label" for="child-name">Name des Kindes<span class="star">*</span></label>
-                    <input type="text" class="form__field" name="child-name" id="child-name">
+                    <input type="text" class="form__field" name="child-name" id="child-name" required>
                 </div>
                 <div class="form__field-container col-6">
                     <label class="form__label" for="day">Geburtstag<span class="star">*</span></label>
                     <div class="select-container">
-                        <select name="day" id="day">
-                            <option value="Tag">Tag</option>
+                        <select name="day" id="day" required>
+                            <option value="" selected>Tag</option>
                             <option value="1">1</option>
                         </select>
-                        <select name="month" id="month">
-                            <option value="month">Monat</option>
+                        <select name="month" id="month" required>
+                            <option value="" selected>Monat</option>
                             <option value="1">1</option>
                         </select>
-                        <select name="year" id="year">
-                            <option value="year">Jahr</option>
+                        <select name="year" id="year" required>
+                            <option value="" selected>Jahr</option>
                             <option value="1">1</option>
                         </select>
                     </div>
@@ -66,19 +66,19 @@
                             <!-- First name -->
                             <div class="form__field-container">
                                 <label class="form__label" for="form-first-name">Vorname<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-first-name" name="form-first-name">
+                                <input type="text" class="form__field" id="form-first-name" name="form-first-name" required>
                             </div>
 
                             <!-- Last name -->
                             <div class="form__field-container ">
                                 <label class="form__label" for="form-last-name">Nachname<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-last-name" name="form-last-name">
+                                <input type="text" class="form__field" id="form-last-name" name="form-last-name" required>
                             </div>
 
                             <!-- Email -->
                             <div class="form__field-container ">
                                 <label class="form__label" for="form-email">Email<span class="star">*</span></label>
-                                <input type="email" class="form__field" id="form-email" name="form-email">
+                                <input type="email" class="form__field" id="form-email" name="form-email" required>
                             </div>
 
                             <!-- Phonenumber -->
@@ -92,26 +92,29 @@
                         <!-- Street -->
                         <div class="form__field-container">
                             <label class="form__label" for="form-street">Straße<span class="star">*</span></label>
-                            <input type="text" class="form__field" id="form-street" name="form-street">
+                            <input type="text" class="form__field" id="form-street" name="form-street" required>
                         </div>
                         <div class="location-container row">
                             <!-- Zip code -->
                             <div class="form__field-container w-3 w-100">
                                 <label class="form__label" for="form-zip-code">PLZ<span class="star">*</span></label>
-                                <input type="text" class="form__field form__zip-code" id="form-zip-code" name="form-zip-code">
+                                <input type="text" class="form__field form__zip-code" id="form-zip-code" name="form-zip-code" required>
                             </div>
 
                             <!-- City -->
                             <div class="form__field-container w-6 w-100">
                                 <label class="form__label" for="form-city">Stadt<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-city" name="form-city">
+                                <input type="text" class="form__field" id="form-city" name="form-city" required>
                             </div>
                         </div>
                         <!-- Country -->
                         <div class="form__field-container select-container">
                             <label class="form__label" for="form-country">Land<span class="star">*</span></label>
-                            <select name="form-country" id="form-country">
-                                <option value="Auswählen">Auswählen</option>
+                            <select name="form-country" id="form-country" required>
+                                <option value="" selected>Auswählen</option>
+                                <option value="at">Österreich</option>
+                                <option value="de">Deutschland</option>
+                                <option value="ch">Shweiz</option>
                             </select>
                         </div>
                     </div>
