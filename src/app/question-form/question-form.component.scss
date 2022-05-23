@@ -117,6 +117,10 @@
     resize: none;
     outline: none;
     padding: 0.5rem 0.8rem;
+
+    &:focus {
+        border-color: var(--color-primary);
+    }
 }
 
 .form__btn {
