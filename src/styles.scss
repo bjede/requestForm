@@ -75,6 +75,10 @@ fieldset {
 }
 
 .w-100 {
+    width: 100%;
+}
+
+.wm-100 {
     @media (max-width: 713px) {
         width: 100%;
     }
