@@ -15,7 +15,7 @@
                 <!-- Number of adults -->
                 <div class="form__field-container col-6">
                     <label class="form__label" for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
-                    <input class="form__field" type="number" name="form-number" id="form-number" required>
+                    <input class="form__field" type="number" name="form-number" id="form-number" pattern="\d+" min="1" max="10" required>
                 </div>
             </div>
         </fieldset>
@@ -33,7 +33,7 @@
                 <div class="form__field-container col-6">
                     <!-- Child name -->
                     <label class="form__label" for="child-name">Name des Kindes<span class="star">*</span></label>
-                    <input type="text" class="form__field" name="child-name" id="child-name" required>
+                    <input type="text" class="form__field" name="child-name" id="child-name" pattern="[^0-9]+" required>
                 </div>
                 <div class="form__field-container col-6">
                     <label class="form__label" for="day">Geburtstag<span class="star">*</span></label>
@@ -53,6 +53,8 @@
                     </div>
                 </div>
             </div>
+
+            <app-add-child></app-add-child>
         </fieldset>
 
         <fieldset class="form__fieldset">
@@ -66,25 +68,25 @@
                             <!-- First name -->
                             <div class="form__field-container">
                                 <label class="form__label" for="form-first-name">Vorname<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-first-name" name="form-first-name" required>
+                                <input type="text" class="form__field" id="form-first-name" name="form-first-name" pattern="[^0-9]+" required>
                             </div>
 
                             <!-- Last name -->
                             <div class="form__field-container ">
                                 <label class="form__label" for="form-last-name">Nachname<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-last-name" name="form-last-name" required>
+                                <input type="text" class="form__field" id="form-last-name" name="form-last-name" pattern="[^0-9]+" required>
                             </div>
 
                             <!-- Email -->
                             <div class="form__field-container ">
                                 <label class="form__label" for="form-email">Email<span class="star">*</span></label>
-                                <input type="email" class="form__field" id="form-email" name="form-email" required>
+                                <input type="email" class="form__field" id="form-email" name="form-email" pattern="^[a-z0-9.]+@[a-z0-9.]+\.[a-z]{2,4}" required>
                             </div>
 
                             <!-- Phonenumber -->
                             <div class="form__field-container ">
                                 <label class="form__label" for="form-phone">Telefon</label>
-                                <input type="tel" class="form__field" id="form-phone" name="form-phone">
+                                <input type="tel" class="form__field" id="form-phone" name="form-phone" pattern="^[0-9]+">
                             </div>
                         </div>
                     </div>
@@ -92,19 +94,19 @@
                         <!-- Street -->
                         <div class="form__field-container">
                             <label class="form__label" for="form-street">Straße<span class="star">*</span></label>
-                            <input type="text" class="form__field" id="form-street" name="form-street" required>
+                            <input type="text" class="form__field" id="form-street" name="form-street" pattern="^[a-zA-ZäöüÄÖÜß]+\s{1,1}[0-9a-zA-Z]{1,6}" required>
                         </div>
                         <div class="location-container row">
                             <!-- Zip code -->
-                            <div class="form__field-container w-3 w-100">
+                            <div class="form__field-container w-3 wm-100">
                                 <label class="form__label" for="form-zip-code">PLZ<span class="star">*</span></label>
-                                <input type="text" class="form__field form__zip-code" id="form-zip-code" name="form-zip-code" required>
+                                <input type="text" class="form__field form__zip-code w-100" id="form-zip-code" name="form-zip-code" pattern="\d{4,9}" required>
                             </div>
 
                             <!-- City -->
                             <div class="form__field-container w-6 w-100">
                                 <label class="form__label" for="form-city">Stadt<span class="star">*</span></label>
-                                <input type="text" class="form__field" id="form-city" name="form-city" required>
+                                <input type="text" class="form__field" id="form-city" name="form-city" pattern="[^0-9]+" required>
                             </div>
                         </div>
                         <!-- Country -->
