@@ -1,0 +1,70 @@
+.remove-child {
+    margin: -1rem 0 2rem 0.5rem;
+    font-size: 1.6rem;
+    color: rgb(66, 66, 66);
+    opacity: 0.8;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.add-child {
+    color: var(--color-primary);
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    display: inline-block;
+    margin: 0 0 2rem 0;
+    transition: all 225ms ease-in-out;
+
+    &:hover {
+        filter: brightness(1.5);
+        text-decoration: none;
+    }
+}
+
+.form__field-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1.5rem 0;
+}
+
+.form__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form__label {
+    font-size: 1.7rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.select-container {
+    display: flex;
+
+    & > select {
+        flex: 1;
+        min-height: 4.5rem;
+        margin: 0 1rem 0 0;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+.form__field {
+    height: 4.5rem;
+    padding: 0.5rem 0.8rem;
+    outline: none;
+
+    &:focus {
+        border-color: var(--color-primary);
+    }
+}
+
+
+
+
