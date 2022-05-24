@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 0 1.5rem 0;
+    position: relative;
 }
 
 .form__container {
@@ -140,5 +141,32 @@
     &:hover {
         color: var(--color-primary);
         background-color: #f8ba43;
+    }
+}
+
+.invalid {
+    outline: 3px solid var(--color-primary);
+}
+
+.tooltip {
+    font-size: 1.4rem;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    padding: 0.4rem 0.8rem;
+    background-color: rgb(69, 69, 69);
+    color: rgb(227, 227, 227);
+    transform: translateY(0.3rem) translateX(1rem);
+    border-radius: 0.2rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid rgb(69, 69, 69);
+        top: 0;
+        left: 0;
+        transform: translateY(-5px) translateX(5px);
     }
 }
