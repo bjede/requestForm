@@ -7,6 +7,8 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AddChildComponent } from './add-child/add-child.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import { AddChildComponent } from './add-child/add-child.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
