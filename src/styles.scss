@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Import fonts */
-@import 'assets/fonts/fonts.css';
+@import "assets/fonts/fonts.css";
 
 /* Reset global size and set box size to border box */
 * {
@@ -12,7 +12,7 @@
 
 /* Set the primary color */
 :root {
-    --color-primary: #AA2E24;
+    --color-primary: #aa2e24;
     --color-default: #424242;
 }
 
@@ -25,17 +25,18 @@ html {
 body {
     font-size: 1.6rem;
     color: var(--color-default);
-    font-family: 'Overlock', cursive;
+    font-family: "Overlock", cursive;
     background-color: #fcfbf8;
 }
 
-input, 
-select, 
+input,
+select,
 textarea {
     border: 1px solid #d6d6d6;
     border-radius: 0.3rem;
     background-color: #fff;
     font-size: 1.6rem;
+    width: 100%;
 }
 
 select {
@@ -86,4 +87,54 @@ fieldset {
 
 .h-100 {
     height: calc(100% - 1.5rem);
+}
+
+.alert {
+    font-size: 2.4rem;
+    font-family: "Sansita Swashed", cursive;;
+    color: white;
+    background-color: #bc1339;
+    padding: 2rem;
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+
+    p + p {
+        font-family: "Overlock", cursive;
+        font-size: 1.8rem;
+        margin: 0.6rem 0 0 0;
+    }
+}
+
+.mat-form-field-wrapper {
+    padding: 0;
+}
+
+.mat-form-field {
+    border-radius: 0.3rem !important;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 4.5rem !important;
+    padding: 0.5rem 0.8rem !important;
+    background-color: rgb(255, 255, 255) !important;
+    border: 1px solid #d6d6d6;
+    border-radius: 0.3rem !important;
+    background-color: #fff;
+    font-size: 1.6rem;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+    background: unset !important;
 }
