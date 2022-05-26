@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Form } from '../models/form';
 
 @Component({
   selector: 'app-question-form',
@@ -8,18 +9,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class QuestionFormComponent implements OnInit {
 
-  noValid: boolean = false;
-  days: any[] = [];
-  months: string[] = ['Jan.', 'Feb.', 'Mär.', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.']
-  years: any[] = [];
-  isFocus: boolean = false;
+  form = new Form();
 
   constructor() { }
 
   ngOnInit(): void {
-    this.getDays();
-    this.getYears();
   }
+
+  startDate = new FormControl('', [
+    Validators.required
+  ]);
+
+  endDate = new FormControl('', [
+    Validators.required
+  ]);
 
   amountOfAdults = new FormControl('', [
     Validators.required
@@ -29,15 +32,15 @@ export class QuestionFormComponent implements OnInit {
     Validators.required
   ]);
 
-  birthday = new FormControl('', [
+  birthday = new FormControl(null, [
     Validators.required
   ]);
 
-  monthOfBirth = new FormControl('', [
+  monthOfBirth = new FormControl(null, [
     Validators.required
   ]);
 
-  yearOfBirth = new FormControl('', [
+  yearOfBirth = new FormControl(null, [
     Validators.required
   ]);
 
@@ -58,6 +61,10 @@ export class QuestionFormComponent implements OnInit {
     Validators.required
   ]);
 
+  phoneNumber = new FormControl('', [
+    Validators.pattern('^[0-9]+')
+  ]);
+  
   zipCode = new FormControl('', [
     Validators.required
   ]);
@@ -66,11 +73,15 @@ export class QuestionFormComponent implements OnInit {
     Validators.required
   ]);
 
-  country = new FormControl('', [
+  country = new FormControl(null, [
     Validators.required
   ]);
 
+  message = new FormControl('');
+
   questionForm = new FormGroup({
+    startDate: this.startDate,
+    endDate: this.endDate,
     adults: this.amountOfAdults,
     childName: this.childName,
     birthday: this.birthday,
@@ -80,40 +91,24 @@ export class QuestionFormComponent implements OnInit {
     lastName: this.lastName,
     email: this.email,
     street: this.street,
+    phoneNumber: this.phoneNumber,
     zipCode: this.zipCode,
     city: this.city,
     country: this.country,
+    message: this.message,
   });
 
   send() {
-    this.noValid = true;
-    if(this.questionForm.valid){
-      this.noValid = false;
-  
+    this.form.noValid = true;
+    this.questionForm.disabled;
+    if (this.questionForm.valid) {
+      this.form.noValid = false;
       console.log(this.questionForm.value);
       this.questionForm.reset();
-      this.questionForm.disable
+      return;
     }
-    
-  }
+    this.form.color = 'alert';
+    this.form.message = this.form.errorMessage;
 
-    /**
-   *  The current year will be determined and calculates 19 years back and pushes the years into the array.
-   */
-     getYears() {
-      let currentYear = new Date().getFullYear();
-      for (let i = 19; i > 0; i--) {
-        this.years.push(currentYear--);
-      }
-    }
-  
-  
-    /**
-     * Create days 1-31 and push them into the array
-     */
-    getDays() {
-      for (let i = 1; i < 32; i++) {
-        this.days.push(i);
-      }
-    }
+  }
 }
