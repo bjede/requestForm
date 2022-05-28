@@ -89,14 +89,23 @@ fieldset {
     height: calc(100% - 1.5rem);
 }
 
-.alert {
+.alert,
+.success {
     font-size: 2.4rem;
     font-family: "Sansita Swashed", cursive;;
     color: white;
-    background-color: #bc1339;
     padding: 2rem;
     text-align: center;
     margin: 1rem 0 2rem 0;
+}
+
+.success {
+    background-color: #1fa651;
+    padding: 3rem 2rem;
+}
+
+.alert {
+    background-color: #bc1339;
 
     p + p {
         font-family: "Overlock", cursive;
