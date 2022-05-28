@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
 import { Form } from '../models/form';
 
 @Component({
-  selector: 'app-question-form',
-  templateUrl: './question-form.component.html',
-  styleUrls: ['./question-form.component.scss']
+  selector: 'app-request-form',
+  templateUrl: './request-form.component.html',
+  styleUrls: ['./request-form.component.scss']
 })
-export class QuestionFormComponent implements OnInit {
+export class RequestFormComponent implements OnInit {
 
   form = new Form();
   isSumbited = false;

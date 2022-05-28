@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { QuestionFormComponent } from './question-form/question-form.component';
+import { RequestFormComponent } from './request-form/request-form.component';
 import { AlertComponent } from './shared/alert/alert.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionFormComponent,
+    RequestFormComponent,
     AlertComponent
   ],
   imports: [
