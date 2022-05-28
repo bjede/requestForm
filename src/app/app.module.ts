@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { AlertComponent } from './shared/alert/alert.component';
-import { AddChildComponent } from './add-child/add-child.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -17,8 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     QuestionFormComponent,
-    AlertComponent,
-    AddChildComponent
+    AlertComponent
   ],
   imports: [
     BrowserModule,
