@@ -41,6 +41,8 @@ textarea {
 
 select {
     padding-left: 1.2rem;
+    font-family: Overlock, cursive;
+    font-size: 1.8rem;
     cursor: pointer;
 }
 
@@ -92,7 +94,7 @@ fieldset {
 .alert,
 .success {
     font-size: 2.4rem;
-    font-family: "Sansita Swashed", cursive;;
+    font-family: "Sansita Swashed", cursive;
     color: white;
     padding: 2rem;
     text-align: center;
@@ -144,6 +146,8 @@ fieldset {
     font-size: 1.6rem;
 }
 
-.mat-button, .mat-icon-button, .mat-stroked-button {
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button {
     background: unset !important;
 }
