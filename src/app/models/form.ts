@@ -51,4 +51,12 @@ export class Form {
         return `<p>Beim Senden des Formulars ist ein Fehler aufgetreten!</p>
                 <p>Die ungültigen Felder wurden hervorgehoben.</p>`;
     }
+
+
+    /**
+    * @returns - Shows success message.
+    */
+    get successMessage(): string {
+        return `<p>Vielen Dank! Ihre Nachricht wurde erfolgreich an uns übermittelt.</p>`;
+    }
 }
