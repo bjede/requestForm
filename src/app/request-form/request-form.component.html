@@ -1,5 +1,5 @@
 <section class="form-section">
-    <form [formGroup]="requestForm" (ngSubmit)="send()" class="form">
+    <form [formGroup]="formValidation.requestForm" (ngSubmit)="send()" class="form">
         <div >
         <fieldset class="form__fieldset">
             <legend class="form__legend">
@@ -11,22 +11,34 @@
                     <label class="form__label" for="form-date">Reisezeitraum<span class="star">*</span></label>
                     <mat-form-field
                     [ngClass]="{'invalid': 
-                    (form.noValid && startDate.invalid) || 
-                    (startDate.dirty && startDate.invalid) }"
-
-                    [ngClass]="{'invalid': 
-                    (form.noValid && endDate.invalid) || 
-                    (endDate.dirty && endDate.invalid) }"
+                    (form.noValid && formValidation.startDate.invalid) || 
+                    (formValidation.startDate.dirty && formValidation.startDate.invalid) ||
+                    (form.noValid && formValidation.endDate.invalid) || 
+                    (formValidation.endDate.dirty && formValidation.endDate.invalid)}"
                     appearance="fill">
                         <mat-date-range-input 
                         [min]="form.minDate" 
                         [rangePicker]="picker">
-                          <input matStartDate [formControl]="startDate" placeholder="Start Datum" required>
-                          <input matEndDate [formControl]="endDate" placeholder="End Datum"required>
+                          <input matStartDate
+                          (focus)="form.isFocusStartDate = true" 
+                          (focusout)="form.isFocusStartDate = false" 
+                          [formControl]="formValidation.startDate" placeholder="Start Datum" pattern="^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+" type="text" required>
+                          <input matEndDate
+                          (focus)="form.isFocusEndDate = true" 
+                          (focusout)="form.isFocusEndDate = false" 
+                          [formControl]="formValidation.endDate" pattern="^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+" placeholder="End Datum" required>
                         </mat-date-range-input>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-date-range-picker #picker></mat-date-range-picker>
                     </mat-form-field>
+                    <p class="tooltip" *ngIf="
+                    ((form.noValid && form.isFocusStartDate && formValidation.startDate.invalid) || 
+                    (formValidation.startDate.invalid && form.isFocusStartDate && formValidation.startDate.dirty)) ||
+                    ((form.noValid && form.isFocusEndDate && formValidation.endDate.invalid) || 
+                    (formValidation.endDate.invalid && form.isFocusEndDate && formValidation.endDate.dirty))
+                    ">
+                        Bitte geben Sie ein gültiges Datum ein.
+                    </p>
                 </div>
 
                 <!-- Number of adults -->
@@ -36,16 +48,16 @@
                     (focus)="form.isFocusAdults = true" 
                     (focusout)="form.isFocusAdults = false"
                     [ngClass]="{'invalid': 
-                    (form.noValid && amountOfAdults.invalid) || 
-                    (amountOfAdults.dirty && amountOfAdults.invalid) }"
-                    [formControl]="amountOfAdults" class="form__field" 
+                    (form.noValid && formValidation.amountOfAdults.invalid) || 
+                    (formValidation.amountOfAdults.dirty && formValidation.amountOfAdults.invalid) }"
+                    [formControl]="formValidation.amountOfAdults" class="form__field" 
                     type="number" 
                     name="form-number"
                     id="form-number" 
-                    pattern="\d+" min="1" max="10" required>
+                    pattern="[0-9]+" min="1" max="10" required>
                     <p class="tooltip" *ngIf="
-                    (form.noValid && form.isFocusAdults && amountOfAdults.invalid) || 
-                    (amountOfAdults.invalid && form.isFocusAdults && amountOfAdults.dirty)
+                    (form.noValid && form.isFocusAdults && formValidation.amountOfAdults.invalid) || 
+                    (formValidation.amountOfAdults.invalid && form.isFocusAdults && formValidation.amountOfAdults.dirty)
                     ">
                         Bitte geben Sie eine positive Zahl ein.
                     </p>
@@ -70,31 +82,31 @@
                     (focus)="form.isFocusChild = true" 
                     (focusout)="form.isFocusChild = false"
                     [ngClass]="{'invalid': 
-                    (form.noValid && childName.invalid) || 
-                    (childName.dirty && childName.invalid) }"
-                    [formControl]="childName" type="text"
-                    class="form__field" name="child-name" id="child-name" pattern="[^0-9]+" required>
+                    (form.noValid && formValidation.childName.invalid) || 
+                    (formValidation.childName.dirty && formValidation.childName.invalid) }"
+                    [formControl]="formValidation.childName" type="text"
+                    class="form__field" name="child-name" id="child-name" pattern="[^0-9\*!<>():-?.]+" required>
 
                     <p class="tooltip" *ngIf="
-                    (form.noValid && form.isFocusChild && childName.invalid) || 
-                    (childName.invalid && form.isFocusChild && childName.dirty)">
+                    (form.noValid && form.isFocusChild && formValidation.childName.invalid) || 
+                    (formValidation.childName.invalid && form.isFocusChild && formValidation.childName.dirty)">
                         Bitte geben Sie einen gültigen Namen ein.
                     </p>
                 </div>
                 <div class="form__field-container col-6">
                     <label class="form__label" for="day">Geburtstag<span class="star">*</span></label>
                     <div class="select-container">
-                        <select [ngClass]="{'invalid': form.noValid && !birthday.valid }" [formControl]="birthday" name="day"
+                        <select [ngClass]="{'invalid': form.noValid && !formValidation.birthday.valid }" [formControl]="formValidation.birthday" name="day"
                             id="day" required>
                             <option [ngValue]="null" selected>Tag</option>
                             <option *ngFor="let day of form.days" [value]="day">{{ day }}</option>
                         </select>
-                        <select [ngClass]="{'invalid': form.noValid && !monthOfBirth.valid }" [formControl]="monthOfBirth"
+                        <select [ngClass]="{'invalid': form.noValid && !formValidation.monthOfBirth.valid }" [formControl]="formValidation.monthOfBirth"
                             name="month" id="month" required>
                             <option [ngValue]="null" selected>Monat</option>
                             <option *ngFor="let month of form.months" [value]="month">{{ month }}</option>
                         </select>
-                        <select [ngClass]="{'invalid': form.noValid && !yearOfBirth.valid }" [formControl]="yearOfBirth"
+                        <select [ngClass]="{'invalid': form.noValid && !formValidation.yearOfBirth.valid }" [formControl]="formValidation.yearOfBirth"
                             name="year" id="year" required>
                             <option [ngValue]="null" selected>Jahr</option>
                             <option *ngFor="let year of form.years" [value]="year">{{ year }}</option>
@@ -103,7 +115,7 @@
                 </div>
             </div>
         <div formArrayName="children"> 
-                <div *ngFor="let child of childControl; let i = index" [formGroupName]="i">
+                <div *ngFor="let child of formValidation.childControl; let i = index" [formGroupName]="i">
                     <div class="form__container row col-{{ i }}" >
                         <div class="form__field-container col-6">
                             <!-- Child -->
@@ -114,7 +126,7 @@
                             [ngClass]="{'invalid': 
                             (form.noValid && child.get('childName')?.invalid) || 
                             (child.get('childName')?.dirty && child.get('childName')?.invalid) }"
-                            formControlName="childName" type="text" class="form__field" name="child-name-{{ i }}" id="child-name-{{ i }}" pattern="[^0-9]+" required>
+                            formControlName="childName" type="text" class="form__field" name="child-name-{{ i }}" id="child-name-{{ i }}" pattern="[^0-9\*!<>():-?.]+" required>
                             
                             <p class="tooltip" *ngIf="
                             (form.noValid && child.get('focus')?.value && child.get('childName')?.invalid) || 
@@ -145,10 +157,10 @@
                                 </select>
                             </div>
                         </div>
-                        <a href="#remove-child" class="remove-child" (click)="removeChildInputSection($event, i)">Kind entfernen</a>
+                        <a href="#remove-child" event-prevent-default class="remove-child" (click)="formValidation.removeChildInputSection(i)">Kind entfernen</a>
                     </div>
                 </div>
-            <a href="#addChild" class="add-child" (click)="addNewChilrensdFields()">Kind hinzufügen</a>
+            <a href="#addChild" event-prevent-default class="add-child" (click)="formValidation.addNewChilrensdFields()">Kind hinzufügen</a>
         </div>
         </fieldset>
         <fieldset class="form__fieldset">
@@ -167,15 +179,15 @@
                                 (focus)="form.isFocusFirstName = true" 
                                 (focusout)="form.isFocusFirstName = false"
                                 [ngClass]="{'invalid': 
-                                (form.noValid && firstName.invalid) || 
-                                (firstName.dirty && firstName.invalid) }"
-                                [formControl]="firstName"
+                                (form.noValid && formValidation.firstName.invalid) || 
+                                (formValidation.firstName.dirty && formValidation.firstName.invalid) }"
+                                [formControl]="formValidation.firstName"
                                 type="text" class="form__field" id="form-first-name" name="form-first-name"
-                                pattern="[^0-9]+" required>
+                                pattern="[^0-9\*!<>():-?.]+" required>
 
                                 <p class="tooltip" *ngIf="
-                                (form.noValid && form.isFocusFirstName && firstName.invalid) || 
-                                (firstName.invalid && form.isFocusFirstName && firstName.dirty)">
+                                (form.noValid && form.isFocusFirstName && formValidation.firstName.invalid) || 
+                                (formValidation.firstName.invalid && form.isFocusFirstName && formValidation.firstName.dirty)">
                                     Bitte geben Sie einen gültigen Vornamen ein.
                                 </p>
                             </div>
@@ -188,15 +200,15 @@
                                 (focus)="form.isFocusLastName = true" 
                                 (focusout)="form.isFocusLastName = false"
                                 [ngClass]="{'invalid': 
-                                (form.noValid && lastName.invalid) || 
-                                (lastName.dirty && lastName.invalid) }"
-                                [formControl]="lastName"
+                                (form.noValid && formValidation.lastName.invalid) || 
+                                (formValidation.lastName.dirty && formValidation.lastName.invalid) }"
+                                [formControl]="formValidation.lastName"
                                 type="text" class="form__field" id="form-last-name" name="form-last-name"
-                                pattern="[^0-9]+" required>
+                                pattern="[^0-9\*!<>():-?.]+" required>
 
                                 <p class="tooltip" *ngIf="
-                                (form.noValid && form.isFocusLastName && lastName.invalid) || 
-                                (lastName.invalid && form.isFocusLastName && lastName.dirty)">
+                                (form.noValid && form.isFocusLastName && formValidation.lastName.invalid) || 
+                                (formValidation.lastName.invalid && form.isFocusLastName && formValidation.lastName.dirty)">
                                     Bitte geben Sie einen gültigen Nachnamen ein.
                                 </p>
                             </div>
@@ -208,15 +220,15 @@
                                 (focus)="form.isFocusEmail = true" 
                                 (focusout)="form.isFocusEmail = false"
                                 [ngClass]="{'invalid': 
-                                (form.noValid && email.invalid) || 
-                                (email.dirty && email.invalid) }"
-                                [formControl]="email"
+                                (form.noValid && formValidation.email.invalid) || 
+                                (formValidation.email.dirty && formValidation.email.invalid) }"
+                                [formControl]="formValidation.email"
                                 type="email" class="form__field" id="form-email" name="form-email"
                                 pattern="^[a-z0-9.]+@[a-z0-9.]+\.[a-z]{2,4}" required>
 
                                 <p class="tooltip" *ngIf="
-                                (form.noValid && form.isFocusEmail && email.invalid) || 
-                                (email.invalid && form.isFocusEmail && email.dirty)">
+                                (form.noValid && form.isFocusEmail && formValidation.email.invalid) || 
+                                (formValidation.email.invalid && form.isFocusEmail && formValidation.email.dirty)">
                                     Bitte geben Sie einen gültige Email ein.
                                 </p>
                             </div>
@@ -227,16 +239,16 @@
                                 <input
                                 (focus)="form.isFocusPhoneNumber = true" 
                                 (focusout)="form.isFocusPhoneNumber = false"
-                                [formControl]="phoneNumber" 
+                                [formControl]="formValidation.phoneNumber" 
                                 [ngClass]="{'invalid': 
-                                (form.noValid && phoneNumber.invalid) || 
-                                (phoneNumber.dirty && phoneNumber.invalid)}"
-                                type="tel" class="form__field" id="form-phone" name="form-phone" pattern="^[0-9]+">
+                                (form.noValid && formValidation.phoneNumber.invalid) || 
+                                (formValidation.phoneNumber.dirty && formValidation.phoneNumber.invalid)}"
+                                type="tel" class="form__field" id="form-phone" name="form-phone" pattern="[^a-zA-Z\*?:<>.]+">
 
                                 <p class="tooltip" *ngIf="
-                                 (phoneNumber.invalid && 
+                                 (formValidation.phoneNumber.invalid && 
                                 form.isFocusPhoneNumber) && 
-                                (phoneNumber.touched || phoneNumber.dirty)">
+                                (formValidation.phoneNumber.touched || formValidation.phoneNumber.dirty)">
                                 Bitte geben Sie einen gültige Telefonnummer ein.
                             </p>
                             </div>
@@ -250,15 +262,15 @@
                             (focus)="form.isFocusStreet = true" 
                             (focusout)="form.isFocusStreet = false"
                             [ngClass]="{'invalid': 
-                            (form.noValid && street.invalid) || 
-                            (street.dirty && street.invalid) }"
-                            [formControl]="street" type="text"
+                            (form.noValid && formValidation.street.invalid) || 
+                            (formValidation.street.dirty && formValidation.street.invalid) }"
+                            [formControl]="formValidation.street" type="text"
                             class="form__field" id="form-street" name="form-street"
                             pattern="^[a-zA-ZäöüÄÖÜß\*-. ]+\s{1,1}[0-9a-zA-Z]{1,6}" required>
 
                             <p class="tooltip" *ngIf="
-                            (form.noValid && form.isFocusStreet && street.invalid) || 
-                            (street.invalid && form.isFocusStreet && street.dirty)">
+                            (form.noValid && form.isFocusStreet && formValidation.street.invalid) || 
+                            (formValidation.street.invalid && form.isFocusStreet && formValidation.street.dirty)">
                                 Bitte geben Sie einen gültige Straße ein.
                             </p>
                         </div>
@@ -270,36 +282,36 @@
                                 (focus)="form.isFocusZipCode = true" 
                                 (focusout)="form.isFocusZipCode = false"
                                 [ngClass]="{'invalid': 
-                                (form.noValid && zipCode.invalid) || 
-                                (zipCode.dirty && zipCode.invalid) }"
-                                [formControl]="zipCode"
+                                (form.noValid && formValidation.zipCode.invalid) || 
+                                (formValidation.zipCode.dirty && formValidation.zipCode.invalid) }"
+                                [formControl]="formValidation.zipCode"
                                 type="text" class="form__field form__zip-code w-100" id="form-zip-code"
-                                name="form-zip-code" pattern="\d{4,9}" required>
+                                name="form-zip-code" pattern="[^a-zA-Z\*!<>():-?.]+" required>
 
                             <p class="tooltip" *ngIf="
-                            (form.noValid && form.isFocusZipCode && zipCode.invalid) || 
-                            (zipCode.invalid && form.isFocusZipCode && zipCode.dirty)">
+                            (form.noValid && form.isFocusZipCode && formValidation.zipCode.invalid) || 
+                            (formValidation.zipCode.invalid && form.isFocusZipCode && formValidation.zipCode.dirty)">
                                 Bitte geben Sie einen gültige PLZ ein.
                             </p>
                             </div>
 
                             <!-- City -->
-                            <div class="form__field-container w-6 w-100">
+                            <div class="form__field-container w-6 wm-100">
                                 <label class="form__label" for="form-city">Stadt<span class="star">*</span></label>
                                 <input
                                 (focus)="form.isFocusCity = true" 
                                 (focusout)="form.isFocusCity = false"
                                 [ngClass]="{'invalid': 
-                                (form.noValid && city.invalid) || 
-                                (city.dirty && city.invalid) }" 
-                                [formControl]="city" type="text"
+                                (form.noValid && formValidation.city.invalid) || 
+                                (formValidation.city.dirty && formValidation.city.invalid) }" 
+                                [formControl]="formValidation.city" type="text"
                                 class="form__field" id="form-city" 
                                 name="form-city" 
-                                pattern="[^0-9]+" required>
+                                pattern="[^0-9\*!<>():-?.]+" required>
 
                                 <p class="tooltip" *ngIf="
-                                (form.noValid && form.isFocusCity && city.invalid) || 
-                                (city.invalid && form.isFocusCity && city.dirty)">
+                                (form.noValid && form.isFocusCity && formValidation.city.invalid) || 
+                                (formValidation.city.invalid && form.isFocusCity && formValidation.city.dirty)">
                                     Bitte geben Sie einen gültige Stadt ein.
                                 </p>
                             </div>
@@ -308,13 +320,13 @@
                         <div class="form__field-container select-container">
                             <label class="form__label" for="form-country">Land<span class="star">*</span></label>
                             <select 
-                            [ngClass]="{'invalid': form.noValid && !country.valid }" 
-                            [formControl]="country"
+                            [ngClass]="{'invalid': form.noValid && !formValidation.country.valid }" 
+                            [formControl]="formValidation.country"
                                 name="form-country" id="form-country" required>
                                 <option [ngValue]="null" selected>Auswählen</option>
                                 <option value="at">Österreich</option>
                                 <option value="de">Deutschland</option>
-                                <option value="ch">Shweiz</option>
+                                <option value="ch">Schweiz</option>
                             </select>
                         </div>
                     </div>
@@ -324,19 +336,19 @@
                     <div class="form__field-container p-lr-sm h-100">
                         <label class="form__label" for="form-message">Fragen oder Wünsche</label>
                         <textarea 
-                        [formControl]="message"
+                        [formControl]="formValidation.message"
                         (focus)="form.isFocusMessage = true" 
                         (focusout)="form.isFocusMessage = false"
                         [ngClass]="{'invalid':
-                        (form.noValid && message.invalid) || 
-                        (message.dirty && message.invalid)}"
+                        (form.noValid && formValidation.message.invalid) || 
+                        (formValidation.message.dirty && formValidation.message.invalid)}"
                         pattern="^[a-zA-Z0-9äöüÄÖÜß\*!?.\-\+ ]+" name="message" class="form__textarea" id="form-message" cols="30"
                         rows="10"></textarea>
 
                         <p class="tooltip" *ngIf="
-                        message.invalid && 
+                        formValidation.message.invalid && 
                         form.isFocusMessage && 
-                        (message.touched || message.dirty)">
+                        (formValidation.message.touched || formValidation.message.dirty)">
                             Bitte geben Sie einen gültige Nachricht ein.
                         </p>
                     </div>
@@ -347,7 +359,7 @@
         <app-alert
         [alertColor]="form.color"
         [alertMessage]="form.message" 
-        *ngIf="(form.noValid && !requestForm.valid) || isSumbited"></app-alert>
+        *ngIf="(form.noValid && !formValidation.requestForm.valid) || isSumbited"></app-alert>
 
         <div class="btn-container">
             <button class="form__btn">
