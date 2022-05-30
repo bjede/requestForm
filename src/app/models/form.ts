@@ -7,6 +7,8 @@ export class Form {
     days: any[] = [];
     months: string[] = ['Jan.', 'Feb.', 'Mär.', 'Apr.', 'Mai', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.']
     years: any[] = [];
+    isFocusStartDate: boolean = false;
+    isFocusEndDate: boolean = false;
     isFocusAdults: boolean = false;
     isFocusChild: boolean = false;
     isFocusFirstName: boolean = false;
@@ -46,6 +48,9 @@ export class Form {
 
     /**
      * @returns - Shows error message.
+     * 
+     * Beim Senden des Formulars ist ein Fehler aufgetreten!
+     * Die ungültigen Felder wurden hervorgehoben.
      */
     get errorMessage(): string {
         return `<p>Beim Senden des Formulars ist ein Fehler aufgetreten!</p>
@@ -55,6 +60,8 @@ export class Form {
 
     /**
     * @returns - Shows success message.
+    * 
+    * Vielen Dank! Ihre Nachricht wurde erfolgreich an uns übermittelt.
     */
     get successMessage(): string {
         return `<p>Vielen Dank! Ihre Nachricht wurde erfolgreich an uns übermittelt.</p>`;
