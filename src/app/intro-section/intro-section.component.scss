@@ -1,0 +1,55 @@
+@import "../shared/variables";
+
+.intro-container {
+    padding: 8rem 0 8rem 0;
+    background-image: url("../../assets/icons/intro.svg");
+    background-repeat: repeat-x;
+    background-position: right 100%;
+    background-size: auto calc((100% + 6vw) * 0.3 + 0.8rem);
+
+    @media (max-width: 700px) {
+        background-size: auto 18rem;
+        background-position: calc(100% + 42.5rem) 100%;
+    }
+
+    .intro-section {
+        max-width: 92rem;
+        padding: $base-padding;
+        margin: 0 auto;
+        font-family: "Sansita Swashed", cursive;
+        font-size: 3.3rem;
+        color: var(--color-primary);
+
+        h1 {
+            padding: 0 0 0.7rem 0;
+            font-size: clamp(3rem, 4vw, 3.6rem);
+
+            &::after {
+                content: "";
+                display: block;
+                width: 7.7rem;
+                height: 4rem;
+                background-image: url("../../assets/icons/swing.svg");
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+
+                @media (max-width: 700px) {
+                    width: 100%;
+                    height: 2rem;
+                    margin: 1.8rem 0 1.4rem 0;
+                }
+            }
+        }
+
+        p {
+            font-family: "Overlock", cursive;
+            font-size: 1.8rem;
+            color: var(--color-default);
+        }
+
+        @media (max-width: 700px) {
+            text-align: center;
+        }
+    }
+}

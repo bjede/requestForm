@@ -1,0 +1,15 @@
+@import '../variables';
+
+.footer {
+    background-color: #aa2e24;
+    min-height: 20rem;
+    color: white;
+
+    &__container {
+        max-width: $base-width;
+        padding: $base-padding;
+        margin: 0 auto;
+    }
+    
+}
+
