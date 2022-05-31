@@ -7,21 +7,25 @@ export class RequestFormValidation {
     // Create required to be input field startDate
     startDate = new FormControl('', [
         Validators.required,
+        Validators.pattern('^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+')
     ]);
 
     // Create required to be input field endDate
     endDate = new FormControl('', [
         Validators.required,
+        Validators.pattern('^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+')
     ]);
 
     // Create required to be input field amountOfAdults
     amountOfAdults = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[0-9]+')
     ]);
 
     // Create required to be input field childName
     childName = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[^0-9\*!<>():-?.]+')
     ]);
 
     // Create required to be input field birthday
@@ -41,13 +45,15 @@ export class RequestFormValidation {
 
     // Create required to be input field firstName
     firstName = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[^0-9\*!<>():-?.]+')
     ]);
 
 
     // Create required to be input field lastName
     lastName = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[^0-9\*!<>():-?.]+')
     ]);
 
     // Create required to be input field email
@@ -58,7 +64,8 @@ export class RequestFormValidation {
 
     // Create required to be input field street
     street = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^([^\*!<>():-?.])+')
     ]);
 
     // Create required to be input field phoneNumber
@@ -68,12 +75,14 @@ export class RequestFormValidation {
 
     // Create required to be input field zipCode
     zipCode = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[^a-zA-Z\*!<>():-?.]+')
     ]);
 
     // Create required to be input field city
     city = new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[^0-9\*!<>():-?.]+')
     ]);
 
     // Create required to be input field country
@@ -82,7 +91,9 @@ export class RequestFormValidation {
     ]);
 
     // Create input to be field message without required field
-    message = new FormControl('');
+    message = new FormControl('', [
+        Validators.pattern('^[a-zA-Z0-9äöüÄÖÜß\n\r\*!?.\+\\- ]+')
+    ]);
 
     /**
      *  Create FormGroup instance.
@@ -117,7 +128,7 @@ export class RequestFormValidation {
      */
     createNewChildInputFields(): FormGroup {
         return this.fb.group({
-            childName: ['', Validators.required],
+            childName: ['', [Validators.required, Validators.pattern('[^0-9\*!<>():-?.]+')]],
             childBirthday: [null, Validators.required],
             childMonth: [null, Validators.required],
             childYear: [null, Validators.required],
@@ -150,6 +161,14 @@ export class RequestFormValidation {
      */
     removeChildInputSection(i: number) {
         (<FormArray>this.requestForm.get('children')).removeAt(i);
+    }
+
+
+    /**
+   *  Remove all controls from the array children
+   */
+    removeChildrenFromArray() {
+        (<FormArray>this.requestForm.get('children')).clear();
     }
 
 }

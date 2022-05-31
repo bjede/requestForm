@@ -20,11 +20,11 @@
                         [min]="form.minDate" 
                         [rangePicker]="picker">
                           <input matStartDate
-                          (focus)="form.isFocusStartDate = true" 
+                          (focus)="form.isFocusStartDate = true; picker.open()" 
                           (focusout)="form.isFocusStartDate = false" 
                           [formControl]="formValidation.startDate" placeholder="Start Datum" pattern="^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+" type="text" required>
                           <input matEndDate
-                          (focus)="form.isFocusEndDate = true" 
+                          (focus)="form.isFocusEndDate = true; picker.open()" 
                           (focusout)="form.isFocusEndDate = false" 
                           [formControl]="formValidation.endDate" pattern="^[a-zA-Z0-9ä\*-T:.Z\(\)\+ ]+" placeholder="End Datum" required>
                         </mat-date-range-input>
@@ -161,6 +161,9 @@
                     </div>
                 </div>
             <a href="#addChild" event-prevent-default class="add-child" (click)="formValidation.addNewChilrensdFields()">Kind hinzufügen</a>
+            <ng-container *ngIf="formValidation.childControl.length > 0">
+                <a href="#remove-all" class="remove-all-children" event-prevent-default (click)="formValidation.removeChildrenFromArray()">Alle Kinder entfernen</a>
+            </ng-container>
         </div>
         </fieldset>
         <fieldset class="form__fieldset">
@@ -266,7 +269,7 @@
                             (formValidation.street.dirty && formValidation.street.invalid) }"
                             [formControl]="formValidation.street" type="text"
                             class="form__field" id="form-street" name="form-street"
-                            pattern="^[a-zA-ZäöüÄÖÜß\*-. ]+\s{1,1}[0-9a-zA-Z]{1,6}" required>
+                            pattern="^([^\*!<>():-?.])+" required>
 
                             <p class="tooltip" *ngIf="
                             (form.noValid && form.isFocusStreet && formValidation.street.invalid) || 
@@ -342,7 +345,7 @@
                         [ngClass]="{'invalid':
                         (form.noValid && formValidation.message.invalid) || 
                         (formValidation.message.dirty && formValidation.message.invalid)}"
-                        pattern="^[a-zA-Z0-9äöüÄÖÜß\*!?.\-\+ ]+" name="message" class="form__textarea" id="form-message" cols="30"
+                        pattern="^[a-zA-Z0-9äöüÄÖÜß\*\r\n!?.\+\- ]+" name="message" class="form__textarea" id="form-message" cols="30"
                         rows="10"></textarea>
 
                         <p class="tooltip" *ngIf="
