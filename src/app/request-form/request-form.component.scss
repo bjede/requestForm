@@ -1,4 +1,4 @@
-@import '../shared/variables';
+@import "../shared/variables";
 
 .form-section {
     max-width: $base-width;
@@ -174,7 +174,8 @@
     }
 }
 
-.remove-child {
+.remove-child,
+.remove-all-children {
     margin: -1rem 0 2rem 0.5rem;
     font-size: 1.6rem;
     color: rgb(66, 66, 66);
@@ -192,7 +193,7 @@
     font-weight: bold;
     letter-spacing: 0.2rem;
     display: inline-block;
-    margin: 0 0 2rem 0;
+    margin: 0 6rem 2rem 0;
     position: relative;
     transition: all 225ms ease-in-out;
 
@@ -202,7 +203,7 @@
 
         &::before {
             transform: scaleX(1);
-            filter: brightness(1.5);     
+            filter: brightness(1.5);
         }
     }
 
