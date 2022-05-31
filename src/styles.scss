@@ -57,6 +57,10 @@ select {
     background-size: 2.7rem;
     color: var(--color-default);
     cursor: pointer;
+
+    &:focus {
+        border-color: var(--color-primary);
+    }
 }
 
 fieldset {
@@ -135,6 +139,10 @@ fieldset {
 
 .mat-form-field {
     border-radius: 0.3rem !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex:focus-within {
+    border-color: var(--color-primary);
 }
 
 .mat-form-field-underline {
