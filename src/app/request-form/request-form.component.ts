@@ -1,30 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Form } from '../models/form';
 import { RequestFormValidation } from '../models/request-form-validation';
 import { BackendService } from '../services/backend.service';
 import { IRequestData } from '../shared/interfaces/irequest-data';
+
 
 @Component({
   selector: 'app-request-form',
   templateUrl: './request-form.component.html',
   styleUrls: ['./request-form.component.scss']
 })
-export class RequestFormComponent implements OnInit {
+export class RequestFormComponent implements OnInit, OnDestroy {
 
   form = new Form();
   formValidation = new RequestFormValidation();
   isSumbited = false;
   requestData: any = [];
+  getDataFromBackend$!: Subscription;
+  saveDataToBackend$!: Subscription;
 
-  constructor(
-    private fb: FormBuilder, 
-    private backend: BackendService
-    ) {
+  constructor(private backend: BackendService) { }
+
+  // Unsubscribe
+  ngOnDestroy(): void {
+    this.saveDataToBackend$.unsubscribe();
+    this.getDataFromBackend$.unsubscribe();
   }
 
+
   ngOnInit(): void {
-    this.getDataFromBackend();    
+    this.getDataFromBackend();
   }
 
 
@@ -34,15 +41,23 @@ export class RequestFormComponent implements OnInit {
    *  Show success message if validation is true. 
    *  After form validation is true, reset the form fields.
    */
-  send() {    
+  send() {
     this.afterClickingSubmitSetTrue();
     if (this.formValidation.requestForm.valid) {
-      this.saveDataToBackend(this.formValidation.requestForm.value);
-      this.resetFormInputFields();
-      this.showSuccessMessage();
+      this.processFormData();
       return;
     }
     this.showErrorMessage();
+  }
+
+  /**
+   *  Processing form data. Save data to the backend and show success message.
+   *  Reset all form input fields
+   */
+  processFormData() {
+    this.saveDataToBackend(this.formValidation.requestForm.value);
+    this.resetFormInputFields();
+    this.showSuccessMessage();
   }
 
 
@@ -68,10 +83,20 @@ export class RequestFormComponent implements OnInit {
 
   /**
    *  Show success message and set the color to green.
+   *  After 4 seconds hide the alert component.
    */
   showSuccessMessage() {
     this.form.color = 'success';
     this.form.message = this.form.successMessage;
+    this.hideAlertComponent();
+  }
+
+
+  /**
+   * After 4 seconds hide the alert component.
+   */
+  hideAlertComponent() {
+    setTimeout(() => { this.isSumbited = false; }, 4000);
   }
 
 
@@ -86,12 +111,13 @@ export class RequestFormComponent implements OnInit {
    *  Get request data from the backend and push it into the array.
    */
   getDataFromBackend() {
-    this.backend.getDataFromBackend()
-    .subscribe({
-      next: (data) => { this.requestData = data ?? []; console.log(data); },
-      error: (error) => { if(!error.ok){ console.log('Oops, something went wrong! Try again later.');}
-      }
-    });
+    this.getDataFromBackend$ = this.backend.getDataFromBackend()
+      .subscribe({
+        next: (data) => { this.requestData = data ?? []; console.log(data); },
+        error: (error) => {
+          if (!error.ok) { console.log('Oops, something went wrong! Try again later.'); }
+        }
+      });
   }
 
   /**
@@ -101,6 +127,6 @@ export class RequestFormComponent implements OnInit {
    */
   saveDataToBackend(body: IRequestData) {
     this.requestData.push(body);
-    this.backend.saveDataToBackend(this.requestData).subscribe();
+    this.saveDataToBackend$ = this.backend.saveDataToBackend(this.requestData).subscribe();
   }
 }
