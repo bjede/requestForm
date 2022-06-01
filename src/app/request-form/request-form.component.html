@@ -43,24 +43,15 @@
 
                 <!-- Number of adults -->
                 <div class="form__field-container col-6">
-                    <label class="form__label" for="form-number">Anzahl Erwachsene<span class="star">*</span></label>
-                    <input 
-                    (focus)="form.isFocusAdults = true" 
-                    (focusout)="form.isFocusAdults = false"
-                    [ngClass]="{'invalid': 
-                    (form.noValid && formValidation.amountOfAdults.invalid) || 
-                    (formValidation.amountOfAdults.dirty && formValidation.amountOfAdults.invalid) }"
-                    [formControl]="formValidation.amountOfAdults" class="form__field" 
-                    type="number" 
-                    name="form-number"
-                    id="form-number" 
-                    pattern="[0-9]+" min="1" max="10" required>
-                    <p class="tooltip" *ngIf="
-                    (form.noValid && form.isFocusAdults && formValidation.amountOfAdults.invalid) || 
-                    (formValidation.amountOfAdults.invalid && form.isFocusAdults && formValidation.amountOfAdults.dirty)
-                    ">
-                        Bitte geben Sie eine positive Zahl ein.
-                    </p>
+                    <label class="form__label" for="form-number">Anzahl Erwachsene<span class="star">*</span></label>                    
+                    <app-input
+                        [form]="form" 
+                        [control]="formValidation.amountOfAdults"
+                        [type]="'number'"
+                        [regExp]="'[0-9]+'"
+                        [id]="'form-number'"
+                        [alertMessage]="'Bitte geben Sie eine positive Zahl ein.'"
+                    ></app-input>
                 </div>
             </div>
         </fieldset>
@@ -78,20 +69,14 @@
                 <div class="form__field-container col-6">
                     <!-- Child name -->
                     <label class="form__label" for="child-name">Name des Kindes<span class="star">*</span></label>
-                    <input 
-                    (focus)="form.isFocusChild = true" 
-                    (focusout)="form.isFocusChild = false"
-                    [ngClass]="{'invalid': 
-                    (form.noValid && formValidation.childName.invalid) || 
-                    (formValidation.childName.dirty && formValidation.childName.invalid) }"
-                    [formControl]="formValidation.childName" type="text"
-                    class="form__field" name="child-name" id="child-name" pattern="[^0-9\*!<>():-?.]+" required>
-
-                    <p class="tooltip" *ngIf="
-                    (form.noValid && form.isFocusChild && formValidation.childName.invalid) || 
-                    (formValidation.childName.invalid && form.isFocusChild && formValidation.childName.dirty)">
-                        Bitte geben Sie einen gültigen Namen ein.
-                    </p>
+                    <app-input
+                    [form]="form" 
+                    [control]="formValidation.childName"
+                    [type]="'text'"
+                    [regExp]="'[^0-9\*!<>():-?.]+'"
+                    [id]="'child-name'"
+                    [alertMessage]="'Bitte geben Sie einen gültigen Namen ein.'"
+                ></app-input>
                 </div>
                 <div class="form__field-container col-6">
                     <label class="form__label" for="day">Geburtstag<span class="star">*</span></label>
@@ -176,23 +161,15 @@
                         <div class="contact-data__left-container">
                             <!-- First name -->
                             <div class="form__field-container">
-                                <label class="form__label" for="form-first-name">Vorname<span
-                                        class="star">*</span></label>
-                                <input
-                                (focus)="form.isFocusFirstName = true" 
-                                (focusout)="form.isFocusFirstName = false"
-                                [ngClass]="{'invalid': 
-                                (form.noValid && formValidation.firstName.invalid) || 
-                                (formValidation.firstName.dirty && formValidation.firstName.invalid) }"
-                                [formControl]="formValidation.firstName"
-                                type="text" class="form__field" id="form-first-name" name="form-first-name"
-                                pattern="[^0-9\*!<>():-?.]+" required>
-
-                                <p class="tooltip" *ngIf="
-                                (form.noValid && form.isFocusFirstName && formValidation.firstName.invalid) || 
-                                (formValidation.firstName.invalid && form.isFocusFirstName && formValidation.firstName.dirty)">
-                                    Bitte geben Sie einen gültigen Vornamen ein.
-                                </p>
+                                <label class="form__label" for="form-first-name">Vorname<span class="star">*</span></label>
+                                <app-input
+                                [form]="form" 
+                                [control]="formValidation.firstName"
+                                [type]="'text'"
+                                [regExp]="'[^0-9\*!<>():-?.]+'"
+                                [id]="'form-first-name'"
+                                [alertMessage]="'Bitte geben Sie einen gültigen Vornamen ein.'"
+                            ></app-input>
                             </div>
 
                             <!-- Last name -->
