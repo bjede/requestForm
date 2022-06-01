@@ -133,6 +133,10 @@ fieldset {
     }
 }
 
+.form__field.invalid:focus {
+    border-color: transparent !important;
+}
+
 .mat-form-field-wrapper {
     padding: 0;
 }
@@ -153,6 +157,12 @@ fieldset {
     padding: 0 !important;
     border: none !important;
 }
+
+.mat-date-range-input-start-wrapper .mat-date-range-input-inner,
+.mat-date-range-input-inner {
+    top: -0.08rem !important;
+}
+
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
     display: flex !important;
