@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import { EventPreventDefaultDirective } from './events/event-prevent-default.directive';
 import { FooterComponent } from './footer/footer.component';
+import { InputComponent } from './input/input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,15 +12,18 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AlertComponent,
     EventPreventDefaultDirective,
-    FooterComponent
+    FooterComponent,
+    InputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     AlertComponent,
     FooterComponent,
-    EventPreventDefaultDirective
+    EventPreventDefaultDirective,
+    InputComponent
   ]
 })
 export class SharedModule { }
