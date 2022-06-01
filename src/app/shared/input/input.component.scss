@@ -1,0 +1,43 @@
+:host {
+    width: 100%;
+    position: relative;
+}
+
+.form__field {
+    height: 4.5rem;
+    padding: 0.5rem 0.8rem;
+    outline: none;
+
+    &:focus {
+        border-color: var(--color-primary);
+    }
+}
+
+.tooltip {
+    font-size: 1.4rem;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.4rem 0.8rem;
+    background-color: rgb(69, 69, 69);
+    color: rgb(227, 227, 227);
+    transform: translateY(90%) translateX(1rem);
+    border-radius: 0.2rem;
+    z-index: 10;
+
+    &::after {
+        content: "";
+        position: absolute;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid rgb(69, 69, 69);
+        top: 0;
+        left: 0;
+        transform: translateY(-5px) translateX(5px);
+    }
+}
+
+.invalid {
+    box-shadow: 0 0 0 3px var(--color-primary);
+}

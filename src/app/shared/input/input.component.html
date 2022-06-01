@@ -1,0 +1,20 @@
+<input 
+    (focus)="focus = true" 
+    (focusout)="focus = false" 
+    [ngClass]="{'invalid': 
+    (form.noValid && control.invalid) || 
+    (control.dirty && control.invalid) }" 
+    [formControl]="control" class="form__field" 
+    [type]="type" 
+    name="form-number"
+    [id]="id" 
+    [pattern]="regExp" 
+    required>
+
+<ng-container *ngIf="
+    (form.noValid && focus && control.invalid) || 
+    (control.invalid && focus && control.dirty)">
+    <p class="tooltip" >
+        {{ alertMessage }}
+    </p>
+</ng-container>
